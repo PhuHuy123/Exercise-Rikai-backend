@@ -3,9 +3,10 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const app = express()
 var bodyParser = require("body-parser");
-const authorRoute = require("./routes/author");
-const articleRoute = require("./routes/article");
-const userRoute = require("./routes/user");
+const authorRoute = require("./src/routes/author");
+const articleRoute = require("./src/routes/article");
+const userRoute = require("./src/routes/user");
+const uploadRoute = require("./src/routes/upload");
 const dotenv = require('dotenv')
 dotenv.config();
 app.use(cors());
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 app.use("/author", authorRoute);
 app.use("/article", articleRoute);
 app.use("/user", userRoute);
+app.use("/image", uploadRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
